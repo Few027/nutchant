@@ -1,0 +1,128 @@
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        th {
+            background-color: #0099FF;
+            color: white;
+        }
+        h3,
+        h5,
+        label,
+        th,
+        td,
+        tr {
+            font-family: 'Prompt', sans-serif;
+        }
+    </style>
+</head>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12"><br /><br /><br />
+            <h3 align="center">แจ้งปัญหา </h3>
+            <form action="" method="POST" name="register" id="register">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+                    (click)='openModel()'>
+                    เพิ่ม
+                </button><br /><br />
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <h5 class="modal-title" id="exampleModalLabel">แจ้งปัญหา</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">หัวข้อ</label>
+                                        <input name="หัวข้อ" type="text" size="50" maxlength="100" class="form-control"
+                                            id="exampleFormControlInput1" placeholder="text" required required
+                                            [(ngModel)]="reportCreate.topic" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">โปรเจค</label>
+                                        <input name="หัวข้อ" type="text" size="50" maxlength="100" class="form-control"
+                                            id="exampleFormControlInput1" placeholder="text" required required
+                                            [(ngModel)]="reportCreate.project" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">รายละเอียดงาน</label>
+                                        <textarea name="รายละเอียดงาน" class="form-control"
+                                            id="exampleFormControlTextarea1" rows="3" required
+                                            [(ngModel)]="reportCreate.particulars"></textarea>
+                                    </div>
+
+
+                                    <div class="from-group">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlFile1" type="submit" name="regis"
+                                                    id="regis" class="btn btn-success btn-sm"
+                                                    value="รูปภาพ">รูปภาพ</label>
+                                                <input name="img" type="file" class="form-control-file"
+                                                    id="exampleFormControlFile1" required
+                                                    [(ngModel)]="reportCreate.image" />
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    {{reportCreate|json}}
+                                    <div class="modal-center">
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                            data-dismiss="modal">Cancel</button>&nbsp; &nbsp;
+                                        <button type="button" class="btn btn-primary btn-sm" name="img"
+                                            (click)="createReport()">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-bordered">
+
+
+                    <tr>
+                        <th scope="col">วันเดือนปี</th>
+                        <th scope="col">หัวข้อ</th>
+                        <th scope="col">โปรเจค</th>
+                        <th scope="col">รายละเอียด</th>
+                        <th scope="col">รูปภาพ</th>
+                    </tr>
+
+                    <tbody>
+                        
+                        <tr>
+
+                            <td>20/12/63</td>
+                            <td>ติดกล้อง</td>
+                            <td>ติดกล้อง</td>
+                            <td>กล้องไม่ติด</td>
+                            <td><img src="../../../assets/img/credit/mastercard.png" class="rounded float-left"
+                                    alt="..."></td>
+                        </tr>
+                        <tr>
+
+                            <td>12/1/63</td>
+                            <td>Jacob</td>
+                            <td>ติดกล้อง</td>
+                            <td>Thornton</td>
+                            <td><img src="../../../assets/img/credit/visa.png" class="rounded float-left" alt="...">
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <!-- <ngb-pagination class="d-flex justify-content-end" [collectionSize]="100" [(page)]="page">
+                </ngb-pagination> -->

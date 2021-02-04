@@ -1,0 +1,155 @@
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        th {
+            background-color: #56c7dd;
+            color: rgb(8, 8, 8);
+        }
+
+        h4,
+        h5,
+        label,
+        th,
+        td,
+        tr {
+            font-family: 'Prompt', sans-serif;
+        }
+    </style>
+</head>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12"><br>
+            <h4 align="center" class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">ข้อมูลลูกค้า </h4>
+
+            <form method="GET" target="_blank">
+                <table cellspacing="4">
+                    <tr>
+                        <td align="right">
+                            <input type="search" name="hl" name="q" size="20" maxlength="200">
+                            <input type="submit" name="btnG" VALUE="ค้นหา.">
+                            <!-- <label>ค้นหา : <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="table-data" ></label> -->
+                        </td>
+                    </tr>
+                </table>
+            </form><br />
+
+            <table class="table table-bordered">
+
+                <tr align="center">
+                    <th scope="col">รหัส</th>
+                    <th scope="col">ชื่อ</th>
+                    <th scope="col">สกุล</th>
+                    <th scope="col">เบอร์โทร</th>
+                    <th scope="col">อำเภอ</th>
+                    <th scope="col">จังหวัด</th>
+                    <th scope="col">อยู่ในประกัน</th>
+                    <th scope="col">เครื่องมือ</th>
+                </tr>
+
+                <tbody
+                    *ngIf="customerDataResShow && customerDataResShow.customer && customerDataResShow.customer.length > 0">
+                    <tr *ngFor="let item of customerDataResShow.customer ; index as i">
+
+
+                        <td>{{item.id}}</td>
+                        <td>{{item.firstName}}</td>
+                        <td>{{item.lastName}}</td>
+                        <td>{{item.tel}}</td>
+                        <td>{{item.district}}</td>
+                        <td>{{item.province}}</td>
+                        <td>{{item.insurance}}</td>
+                        <!-- <td>{{item.createdAt}}</td> -->
+                        <td align="center" class=" text-left"><a href="http://localhost:4200/dashboard/cc"
+                                class="btn m-b-15 ml-2 mr-2 btn-md  btn-rounded-circle btn-success"
+                                data-toggle="tooltip" data-placement="top" data-original-title="แก้ไข"
+                                id="customerModal"><i class="mdi mdi-border-color">แก้ไข</i></a>
+
+                        <!-- <td><button type="button" class="btn btn-primary" data-toggle="model"
+                                (click)="openModal(country.id)">ลบข้อมูล</button> -->
+
+                            <button type="button" class="btn m-b-15 ml-2 mr-2 btn-md  btn-rounded-circle btn-danger"
+                                data-toggle="tooltip" data-placement="top" data-original-title="ลบ"
+                                onclick="deleteConfirm2(this)"><i class="mdi mdi-delete-forever">ลบ</i></button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <ngb-pagination class="d-flex justify-content-end" [rotate]="true" [maxSize]="5" [boundaryLinks]="true">
+            </ngb-pagination>
+
+            <form action="" method="POST" name="register" id="customerModal">
+                <!-- <button type="button" class="btn btn-success" data-toggle="modal" (click)='openModel()'> -->
+                    <button type="button" class="btn btn-success" data-toggle="modal" ></button>
+                    เพิ่ม
+            <br /><br />
+                <!-- Modal -->
+
+                <div class="modal fade" id="customerModal" tabindex="-1" role="dialog"
+                    aria-labelledby="customerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <h5 class="modal-title" id="customerModalLabel">แก้ไขข้อมูล</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">รหัส</label>
+                                        <input name="รหัส" type="text" size="50" maxlength="100" class="form-control"
+                                            id="exampleFormControlInput1" placeholder="text" required required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">ชื่อ</label>
+                                        <input name="ชื่อ" type="text" size="50" maxlength="100" class="form-control"
+                                            id="exampleFormControlInput1" placeholder="text" required required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">สกุล</label>
+                                        <textarea name="สกุล" class="form-control" id="exampleFormControlTextarea1"
+                                            rows="3" required></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">เบอร์โทร</label>
+                                        <textarea name="เบอร์โทร" class="form-control" id="exampleFormControlTextarea1"
+                                            rows="3" required></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">อำเภอ</label>
+                                        <textarea name="อำเภอ" class="form-control" id="exampleFormControlTextarea1"
+                                            rows="3" required></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">จังหวัด</label>
+                                        <textarea name="จังหวัด" class="form-control" id="exampleFormControlTextarea1"
+                                            rows="3" required></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">อยู่ในประกัน</label>
+                                        <textarea name="อยู่ในประกัน" class="form-control"
+                                            id="exampleFormControlTextarea1" rows="3" required></textarea>
+                                    </div>
+
+                                    <!-- {{reportCreate|json}} -->
+                                    <div class="modal-center">
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                            data-dismiss="modal">Cancel</button>&nbsp; &nbsp;
+                                        <button type="button" class="btn btn-primary btn-sm" name="img">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Form Register</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="center_div">
+            <div class="row">
+                <form class="col-md-9 col-md-8">
+                    <form name="register" action="register_db.php" method="POST" id="register" class="form-horizontal">
+                    </form>
+                    <form action="/action_page.php">
+                        <div class="form-group">
+                            <div class="col-sm-5"> </div>
+                            <div class="col-sm-7">
+                                <h3 class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">สร้างข้อมูลลูกค้า</h3> <br>
+                                <label for="name">ชื่อ :</label>
+                                <input name="Admin_name" type="text" required class="form-control" id="Admin_name"
+                                    placeholder="ชื่อ" required [(ngModel)]="customerCreate.name" /><br/>
+
+                                <label for="name">สกุล :</label>
+                                <input name="Admin_name" type="text" required class="form-control" id="Admin_name"
+                                    placeholder="สกุล" required [(ngModel)]="customerCreate.lastName"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-5"> </div>
+                            <div class="col-sm-7"> <br>
+                                <label for="pwd">เบอร์โทร :</label>
+                                <input name="Admin_phone" type="text" class="form-control" id="Admin_phone"
+                                    placeholder="เบอร์โทร" [(ngModel)]="customerCreate.tel"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-5"> </div>
+                            <div class="col-sm-7"> <br>
+                                <label for="pwd">อำเภอ :</label>
+                                <input name="Admin_text" type="text" required class="form-control" id="Admin_name"
+                                    placeholder="อำเภอ" [(ngModel)]="customerCreate.district" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-5"> </div>
+                            <div class="col-sm-7"> <br>
+                                <label for="pwd">จังหวัด :</label>
+                                <input name="Admin_text" type="text" required class="form-control" id="Admin_name"
+                                    placeholder="จังหวัด" [(ngModel)]="customerCreate.province" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-5"> </div>
+                            <div class="col-sm-7"> <br>
+                                <label for="pwd">อยู่ในประกัน :</label>
+                                <textarea name="address" class="form-control" [(ngModel)]="customerCreate.insurance" ></textarea>
+                            </div>
+                        </div><br /> <br />
+                        <!-- {{customerCreate|json}} -->
+                        <div align="center" class="d-grid gap-2-center">
+                            <button type="reset" class="btn btn-danger btn-sm" >Cancel</button> &nbsp;
+                            <button type="reset" class="btn btn-primary btn-sm" (click)="createCustomer()">Save</button>
+                        </div>
+
+                    </form>
+                </form>
+            </div>
+        </div>
+    </div>
